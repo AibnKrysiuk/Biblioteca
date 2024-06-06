@@ -1,0 +1,33 @@
+{% extends 'padre.html' %}
+
+{% block contenido_cambiante %}
+    <div class="container">
+        <h2>Agregar Pelicula</h2>
+        <form action="{% url 'agregar_pelicula' %}" method="POST">{% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de la pelicula</label>
+                <input type="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Director</label>
+                <input type="nombre" class="form-control" id="exampleInputPassword1" name="director">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Genero</label>
+                <input type="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="genero">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Año de publicacion</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="anio">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="stock">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    
+    
+{% endblock contenido_cambiante %}

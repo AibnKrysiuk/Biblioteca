@@ -14,7 +14,7 @@ class Pelicula(models.Model):
     nombre = models.CharField(max_length=40)
     director = models.CharField(max_length=40)
     genero = models.CharField(max_length=40)
-    anio_publicacion = models.DateField()
+    anio_publicacion = models.IntegerField()
     stock = models.IntegerField()
 
 class Socio(models.Model):
