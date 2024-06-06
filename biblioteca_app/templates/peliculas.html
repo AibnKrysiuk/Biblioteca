@@ -4,7 +4,14 @@
     
 <div class="container">
         <h2>Peliculas cargadas</h2>
-        <a href="{% url 'agregar_pelicula' %}">Agregar Pelicula</a>
+        <ul>
+            <li>
+                <a href="{% url 'agregar_pelicula' %}">Agregar Peli</a>
+            </li>
+            <li>
+                <a href="{% url 'buscar_pelicula_form' %}">Buscar Peli</a>
+            </li>
+        </ul>
         <ul>
             {% for Pelicula in peliculas %}
             <li>{{Pelicula.nombre}}</li>

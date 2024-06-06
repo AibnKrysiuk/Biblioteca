@@ -1,21 +1,16 @@
 {% extends 'padre.html' %}
 {% block contenido_cambiante %}
-
-    <h1>Socios</h1>
-    <h2>Agregar Socio</h2>
-    <div class="container">
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
     <h2>Socios registrados</h2>
     <ul>
-        {% for Socio in lista_socios %}
+        <li>
+            <a href="{% url 'agregar_socio' %}">Agregar Socio</a>
+        </li>
+        <li>
+            <a href="{% url 'buscar_socio_form' %}">Buscar Socio</a>
+        </li>
+    </ul>
+    <ul>
+        {% for Socio in socios %}
         <li>{{Socio.nombre}}</li>
         {% endfor %}
     </ul>

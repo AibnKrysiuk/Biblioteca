@@ -1,0 +1,16 @@
+<div class="container">        
+    <h2>Buscar Socios</h2>
+    <form action="{% url 'buscar_socio' %}" method="get">{% csrf_token %}
+        <p><input type="text" name="nombre"></p>
+        <button type="submit">Buscar</button>
+    </form>
+    {% if socios %}
+        <ul>
+            {% for socio in socios %}
+                <li>{{ socio.nombre }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron pelis.</p>
+    {% endif %}
+</div>

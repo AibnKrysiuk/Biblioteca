@@ -3,16 +3,11 @@
 {% block contenido_cambiante %}
 
 <div class="container">        
-        <h1>Libros</h1>
-        <ul>
-            <li>
-                <a href="{% url 'agregar_libro' %}">Agregar Libro</a>
-            </li>
-            <li>
-                <a href="{% url 'buscar_libro' %}">Buscar Libro</a>
-            </li>
-        </ul>
-        <h2>Libros cargados</h2>
+        <h2>Buscar Libro</h2>
+        <form action="{% url 'buscar' %}" method="get">{% csrf_token %}
+            <p><input type="text" name="nombre"></p>
+            <button type="submit">Buscar</button>
+        </form>
         {% if libros %}
             <ul>
                 {% for libro in libros %}
@@ -22,6 +17,6 @@
         {% else %}
             <p>No se encontraron libros.</p>
         {% endif %}
-</div>
+    </div>
     
 {% endblock contenido_cambiante %}

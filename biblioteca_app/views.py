@@ -24,12 +24,25 @@ def agregar_libro(req):
         return render(req, "libros.html", {"libros": lista})
     else:
         return render(req, "agregar_libro.html", {})
+    
+def buscar_libro(req):
+        
+    return render(req, "buscar_libro.html")
+    
+def buscar(req):
 
+    if req.GET["nombre"]:
+        nombre = req.GET["nombre"]
+        libros = Libro.objects.filter(nombre=nombre)
+        return render(req, "buscar_libro.html", {"libros": libros})
+
+    else:
+        return render(req, "buscar_libro.html", {"message":"No se encontro ningun libro con ese nombre"})
 
 # Vista de peliculas
 def peliculas(req):
     lista = Pelicula.objects.all()
-    return render(req, "peliculas.html", {"lista_peliculas": lista})
+    return render(req, "peliculas.html", {"peliculas": lista})
 
 
 def agregar_pelicula(req):
@@ -42,26 +55,48 @@ def agregar_pelicula(req):
     else:
         return render(req, "agregar_pelicula.html", {})
 
+def buscar_pelicula_form(req):
+        
+    return render(req, "buscar_peliculas.html")
+
+def buscar_pelicula(req):
+
+    if req.GET["nombre"]:
+        nombre = req.GET["nombre"]
+        peliculas = Pelicula.objects.filter(nombre=nombre)
+        return render(req, "buscar_peliculas.html", {"peliculas": peliculas})
+
+    else:
+        return render(req, "buscar_peliculas.html", {"message":"No se encontro ningun libro con ese nombre"})
+    
 #Socios
 def socios(req):
-    return render(req, "socios.html", {})
-
-def lista_socios(req):
-
     lista = Socio.objects.all()
-
     return render(req, "socios.html", {"lista_socios": lista})
 
 def agregar_socio(req):
 
     if req.method == 'POST':
-        nuevo_socio = Pelicula(nombre=req.POST['nombre'],autor=req.POST['autor'],genero=req.POST['genero'], anio_publicacion=req.POST['anio'], stock=req.POST['stock'])
+        nuevo_socio = Socio(nombre=req.POST['nombre'],numero_carnet=req.POST['numero_carnet'])
         nuevo_socio.save()
-        return render(req, "socios.html", {})
+        lista = Socio.objects.all()
+        return render(req, "socios.html", {"socios":lista})
     else:
-        return render(req, "socios.html", {})
+        return render(req, "agregar_socio.html", {})
+    
+def buscar_socio_form(req):
+        
+    return render(req, "buscar_socios.html")
 
+def buscar_socio(req):
 
+    if req.GET["nombre"]:
+        nombre = req.GET["nombre"]
+        socios = Socio.objects.filter(nombre=nombre)
+        return render(req, "buscar_socios.html", {"socios": socios})
+
+    else:
+        return render(req, "buscar_socios.html", {"message":"No se encontro ningun libro con ese nombre"})
 
 
 

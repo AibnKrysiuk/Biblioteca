@@ -1,0 +1,22 @@
+{% extends 'padre.html' %}
+
+{% block contenido_cambiante %}
+
+<div class="container">        
+        <h2>Buscar Pelicula</h2>
+        <form action="{% url 'buscar_pelicula' %}" method="get">{% csrf_token %}
+            <p><input type="text" name="nombre"></p>
+            <button type="submit">Buscar</button>
+        </form>
+        {% if peliculas %}
+            <ul>
+                {% for pelicula in peliculas %}
+                    <li>{{ pelicula.nombre }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron pelis.</p>
+        {% endif %}
+    </div>
+    
+{% endblock contenido_cambiante %}
