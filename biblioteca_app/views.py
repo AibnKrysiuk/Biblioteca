@@ -10,7 +10,7 @@ def index(req):
 
 #Vista de Libros 
 def libros(req):
-    return render(req, "libros.html", {})
+    return render(req, "libros.html")
 
 def lista_libros(req):
 
