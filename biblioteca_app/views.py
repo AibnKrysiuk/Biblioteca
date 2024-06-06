@@ -17,6 +17,17 @@ def lista_libros(req):
     lista = Libro.objects.all()
 
     return render(req, "libros.html", {"lista_libros": lista})
+
+def agregar_libro(req):
+
+    if req.method == 'POST':
+        nuevo_libro = Libro(nombre=req.POST['nombre'],autor=req.POST['autor'],genero=req.POST['genero'], anio_publicacion=req.POST['anio'], stock=req.POST['stock'])
+        nuevo_libro.save()
+        return render(req, "libros.html", {})
+    else:
+        return render(req, "libros.html", {})
+
+
 # Vista de peliculas
 def peliculas(req):
     return render(req, "peliculas.html", {})
@@ -26,6 +37,15 @@ def lista_peliculas(req):
     lista = Pelicula.objects.all()
 
     return render(req, "peliculas.html", {"lista_peliculas": lista})
+
+def agregar_pelicula(req):
+
+    if req.method == 'POST':
+        nuevo_pelicula = Libro(nombre=req.POST['nombre'],autor=req.POST['director'],genero=req.POST['genero'], anio_publicacion=req.POST['anio'], stock=req.POST['stock'])
+        nuevo_pelicula.save()
+        return render(req, "peliculas.html", {})
+    else:
+        return render(req, "peliculas.html", {})
 
 #Socios
 def socios(req):
@@ -37,13 +57,15 @@ def lista_socios(req):
 
     return render(req, "socios.html", {"lista_socios": lista})
 
-def agregar_libro(req):
+def agregar_socio(req):
 
-    nuevo_libro = Libro(nombre="Python Basico",autor="Ivan Krysiuk",genero="Programacion", anio_publicacion="2024")
-    nuevo_libro.save()
-    return HttpResponse(f"""
-        <p>Libro: {nuevo_libro.nombre} de {nuevo_libro.autor} añadido correctamente.</p>
-    """)
+    if req.method == 'POST':
+        nuevo_socio = Libro(nombre=req.POST['nombre'],autor=req.POST['autor'],genero=req.POST['genero'], anio_publicacion=req.POST['anio'], stock=req.POST['stock'])
+        nuevo_socio.save()
+        return render(req, "socios.html", {})
+    else:
+        return render(req, "socios.html", {})
+
 
 
 
